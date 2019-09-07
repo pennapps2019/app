@@ -1,17 +1,42 @@
 package com.pennapps2019.application;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import android.os.Bundle;
-
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private static final String TAG = MapsActivity.class.getName();
+
+    private FusedLocationProviderClient fusedLocationClient = null;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
 
     private GoogleMap mMap;
 
@@ -23,6 +48,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Log.d(TAG, "Instantiating");
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(800);
+        locationRequest.setFastestInterval(500);
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location l : locationResult.getLocations()) {
+                    String s = Double.toString(l.getLatitude()) + " " + Double.toString(l.getLongitude());
+                    Log.d(TAG, s);
+                }
+            }
+        };
+
+        boolean permissionAccessFineLocationApproved =
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED;
+
+        if (!permissionAccessFineLocationApproved) {
+            // App doesn't have access to the device's location at all. Make full request
+            // for permission.
+            ActivityCompat.requestPermissions(this, new String[] {
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    },
+                    0);
+        }
+
     }
 
 
@@ -45,4 +106,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(levineHall));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fusedLocationClient.requestLocationUpdates(
+                locationRequest,
+                locationCallback,
+                null);
+
+    }
+
+
 }
