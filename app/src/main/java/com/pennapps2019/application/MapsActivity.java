@@ -113,12 +113,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         // Set button behaviour
-        final Button button = findViewById(R.id.create_output_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                createOutputLog(locationRecorder.dump());
-            }
-        });
+//        final Button button = findViewById(R.id.create_output_button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                createOutputLog(locationRecorder.dump());
+//            }
+//        });
 
     }
 
