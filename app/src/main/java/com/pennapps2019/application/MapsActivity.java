@@ -167,7 +167,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Get the data: latitude/longitude positions of police stations.
         try {
-            list = readItems(R.raw.location_heatmap_heavy);
+            list = readItems(R.raw.location_heatmap_heavy_filtered);
         } catch (JSONException e) {
             Toast.makeText(this, "Problem reading list of locations.", Toast.LENGTH_LONG).show();
         }
@@ -224,7 +224,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         try {
             File locationLog = new File(
                     getApplicationContext().getExternalFilesDir(null),
-                    "location-log.csv"
+                    "location_log.csv"
             );
             FileWriter writer = new FileWriter(locationLog);
             writer.write(content);
