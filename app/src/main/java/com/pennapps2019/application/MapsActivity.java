@@ -1,18 +1,14 @@
 package com.pennapps2019.application;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -22,18 +18,12 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -50,6 +40,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
+    private LocationRecorder locationRecorder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setInterval(800);
+        locationRequest.setInterval(500);
         locationRequest.setFastestInterval(500);
 
         locationCallback = new LocationCallback() {
@@ -74,12 +66,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (locationResult == null) {
                     return;
                 }
+
+                Toast.makeText(getApplicationContext(), "Received location.", Toast.LENGTH_SHORT).show();
+
                 for (Location l : locationResult.getLocations()) {
-                    String s = Double.toString(l.getLatitude()) + " " + Double.toString(l.getLongitude());
-                    Log.d(TAG, s);
+                    Log.d(TAG, "Location: " + l.getLatitude() + "," + l.getLongitude());
+
+                    Location gridLoc = roundToGrid(l);
+                    Log.d(
+                            TAG,
+                            "Location rounded to: " + gridLoc.getLatitude() + "," + gridLoc.getLongitude()
+                    );
+                    locationRecorder.recordAt(gridLoc);
                 }
             }
         };
+
+        locationRecorder = new LocationRecorder();
 
         boolean permissionAccessFineLocationApproved =
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -98,11 +101,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final Button button = findViewById(R.id.create_output_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                createOutputLog("Text here");
+                createOutputLog(locationRecorder.dump());
             }
         });
 
+    }
 
+    private Location roundToGrid(Location l) {
+        final Double gridSize = 0.00005d;
+
+        Double latitude = l.getLatitude();
+        Double longitude = l.getLongitude();
+
+        // Round down to nearest grid size
+        latitude -= latitude % gridSize;
+        longitude -= longitude % gridSize;
+
+        // Move to center of grid square
+        latitude += gridSize/2;
+        longitude += gridSize/2;
+
+        // Return
+        Location res = new Location("");
+        res.setLatitude(latitude);
+        res.setLongitude(longitude);
+        return res;
     }
 
 
