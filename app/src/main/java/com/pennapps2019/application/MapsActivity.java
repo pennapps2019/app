@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -83,6 +85,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     },
                     0);
         }
+
+        // Set button behaviour
+        Button button = (Button) findViewById(R.id.create_output_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+            }
+        });
+
 
     }
 
