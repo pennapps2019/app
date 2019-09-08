@@ -82,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return;
                 }
 
-                Toast.makeText(getApplicationContext(), "Received location.", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Received location.", Toast.LENGTH_SHORT).show();
 
                 for (Location l : locationResult.getLocations()) {
                     Log.d(TAG, "Location: " + l.getLatitude() + "," + l.getLongitude());
