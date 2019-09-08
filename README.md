@@ -1,2 +1,2 @@
-# app
-Android application which shows study space hotspots and current usage, crowdsourced from students who recently studied in the area.
+# StillSpace
+Android application which shows study space "hotspots" and current usage, crowdsourced from students who are currently studying in the area.
