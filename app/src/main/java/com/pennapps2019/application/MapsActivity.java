@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,8 +35,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private static final int REQUEST_CODE = 1;
     private static final String TAG = MapsActivity.class.getName();
 
     private FusedLocationProviderClient fusedLocationClient = null;
@@ -87,10 +95,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         // Set button behaviour
-        Button button = (Button) findViewById(R.id.create_output_button);
+        final Button button = findViewById(R.id.create_output_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Do something in response to button click
+                createOutputLog("Text here");
             }
         });
 
@@ -128,5 +136,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    private void createOutputLog(String content) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_CODE
+                );
+            }
+        }
+
+        try {
+            File locationLog = new File(getApplicationContext().getExternalFilesDir(null), "location-log.txt");
+            FileWriter writer = new FileWriter(locationLog);
+            writer.write(content);
+            writer.flush();
+            writer.close();
+
+            Log.d(TAG, "Created location log file at " + locationLog.getPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Toast.makeText(this, "Created location log file.", Toast.LENGTH_LONG).show();
+
+    }
 
 }
