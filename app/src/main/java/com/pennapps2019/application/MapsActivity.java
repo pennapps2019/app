@@ -222,7 +222,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         try {
-            File locationLog = new File(getApplicationContext().getExternalFilesDir(null), "location-log.txt");
+            File locationLog = new File(
+                    getApplicationContext().getExternalFilesDir(null),
+                    "location-log.csv"
+            );
             FileWriter writer = new FileWriter(locationLog);
             writer.write(content);
             writer.flush();
