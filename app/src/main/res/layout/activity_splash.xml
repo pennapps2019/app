@@ -31,7 +31,8 @@
             android:layout_gravity="center"
 
             android:text="@string/app_name_first"
-            android:textAppearance="@style/PrimaryFontTitle"
+            android:textSize="50sp"
+            android:textAppearance="@style/PrimaryFont"
             android:textColor="@color/colorGreen" />
 
         <TextView
@@ -40,7 +41,8 @@
             android:layout_gravity="center"
 
             android:text="@string/app_name_last"
-            android:textAppearance="@style/PrimaryFontTitle"
+            android:textSize="50sp"
+            android:textAppearance="@style/PrimaryFont"
             android:textColor="@android:color/black" />
 
     </LinearLayout>
