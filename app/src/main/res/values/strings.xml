@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">StillSpace</string>
+    <string name="app_name_first">Still</string>
+    <string name="app_name_last">Space</string>
+
     <string name="title_activity_maps">StillSpace</string>
     <string name="create_output_button">Create Output</string>
 </resources>
