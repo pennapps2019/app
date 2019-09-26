@@ -1,6 +1,27 @@
 apply plugin: 'com.android.application'
 
+// Set the variables for these by copying the following values to ~/.gradle/gradle.properties
+// and filling in the values:
+//
+// STILLSPACE_KEY_STORE_FILE=/path/to/keystore.jks
+// STILLSPACE_KEY_ALIAS=
+// STILLSPACE_KEY_PASSWORD=
+// STILLSPACE_STORE_PASSWORD=
+//
+def store_file = project.findProperty('STILLSPACE_KEY_STORE_FILE') ?: 'No store file defined'
+def key_alias = project.findProperty('STILLSPACE_KEY_ALIAS') ?: 'No key alias defined'
+def key_password = project.findProperty('STILLSPACE_KEY_PASSWORD') ?: 'No key password defined'
+def store_password = project.findProperty('STILLSPACE_STORE_PASSWORD') ?: 'No store password defined'
+
 android {
+    signingConfigs {
+        release {
+            storeFile file(store_file)
+            keyAlias = key_alias
+            keyPassword key_password
+            storePassword store_password
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.pennapps2019.application"
@@ -12,8 +33,10 @@ android {
     }
     buildTypes {
         release {
+            debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
