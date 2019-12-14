@@ -5,4 +5,5 @@
 
     <string name="title_activity_maps">StillSpace</string>
     <string name="create_output_button">Create Output</string>
+    <string name="stillspace_logo_content_description">StillSpace Logo</string>
 </resources>
