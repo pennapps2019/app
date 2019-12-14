@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.pennapps2019.application.onboarding.OnboardingActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     private static int DELAY = 1000;
@@ -29,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), OnboardingActivity.class);
                 startActivity(intent);
                 finish();
             }

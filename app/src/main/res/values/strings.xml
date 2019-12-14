@@ -3,7 +3,13 @@
     <string name="app_name_first">Still</string>
     <string name="app_name_last">Space</string>
 
+    <!-- Onboarding Activity -->
+    <string name="onboarding_1_description">StillSpace helps find quiet\nstudy spaces near you.</string>
+    <string name="skip">Skip</string>
+
+    <!-- Maps Activity -->
     <string name="title_activity_maps">StillSpace</string>
-    <string name="create_output_button">Create Output</string>
     <string name="stillspace_logo_content_description">StillSpace Logo</string>
+    <string name="create_output_button">Create Output</string>
+
 </resources>
