@@ -4,8 +4,11 @@
     <string name="app_name_last">Space</string>
 
     <!-- Onboarding Activity -->
+    <string name="content_description_circle_marker">Circle Marker</string>
+    <string name="content_description_book">Book</string>
     <string name="onboarding_1_description">StillSpace helps find quiet\nstudy spaces near you.</string>
-    <string name="skip">Skip</string>
+    <string name="content_description_current_page">Current page icon</string>
+    <string name="content_description_skip">Skip</string>
 
     <!-- Maps Activity -->
     <string name="title_activity_maps">StillSpace</string>
