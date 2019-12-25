@@ -14,8 +14,8 @@ Install [Android Studio](https://developer.android.com/studio/).
 
 Save the following lines to the file `~/.gradle/gradle.properties` and fill in the values:
 ```
-<APPNAME>_KEY_STORE_FILE=/path/to/keystore.jks
-<APPNAME>_KEY_ALIAS=
-<APPNAME>_KEY_PASSWORD=
-<APPNAME>_STORE_PASSWORD=
+STILLSPACE_KEY_STORE_FILE=/path/to/keystore.jks
+STILLSPACE_KEY_ALIAS=
+STILLSPACE_KEY_PASSWORD=
+STILLSPACE_STORE_PASSWORD=
 ```
