@@ -10,6 +10,14 @@ Android application which shows study space "hotspots" and current usage, crowds
 
 Install [Android Studio](https://developer.android.com/studio/).
 
+#### Google Maps API Key (for development builds)
+
+Generate a [Google Maps SDK API key (step 1)](https://developers.google.com/maps/documentation/android-sdk/get-api-key).
+
+In the file `app/src/debug/res/values/google_maps_api.xml`, replace the value of the placeholder key with your API key.
+
+Build and run the Android application on a physical or virtual device.
+
 #### Creating a Production Release
 
 Save the following lines to the file `~/.gradle/gradle.properties` and fill in the values:
