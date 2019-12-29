@@ -55,8 +55,7 @@ public class OnboardingActivity extends FragmentActivity {
                 return new Onboarding1Fragment();
             }
             else {
-                // TODO: Implement other fragments
-                return new Onboarding1Fragment();
+                return new Onboarding2Fragment();
             }
         }
 

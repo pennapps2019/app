@@ -7,8 +7,19 @@
     <string name="content_description_circle_marker">Circle Marker</string>
     <string name="content_description_book">Book</string>
     <string name="onboarding_1_description">StillSpace helps find quiet\nstudy spaces near you.</string>
+
+    <string name="onboarding_2_text_1">View study areas that are:</string>
+    <string name="onboarding_2_text_2">Then see if it is available <b>now</b> or\nin <b>1–2 hours.</b></string>
+    <string name="onboarding_2_empty_color">Green</string>
+    <string name="onboarding_2_sparse_color">Yellow</string>
+    <string name="onboarding_2_crowded_color">Red</string>
+    <string name="empty">Empty</string>
+    <string name="sparse">Sparse</string>
+    <string name="crowded">Crowded</string>
+
     <string name="content_description_current_page">Current page icon</string>
     <string name="content_description_skip">Skip</string>
+    <string name="content_description_finish">Finish</string>
 
     <!-- Maps Activity -->
     <string name="title_activity_maps">StillSpace</string>
