@@ -25,5 +25,8 @@
     <string name="title_activity_maps">StillSpace</string>
     <string name="stillspace_logo_content_description">StillSpace Logo</string>
     <string name="create_output_button">Create Output</string>
+    <string name="maps_now">Now</string>
+    <string name="maps_1hr">+1 hour</string>
+    <string name="maps_2hr">+2 hours</string>
 
 </resources>

@@ -50,5 +50,19 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="MapsButtonsText" parent="PrimaryFont">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="MapsButtonsActive" parent="MapsButtonsText">
+        <item name="android:textColor">@color/colorOffWhite</item>
+        <item name="android:background">@color/colorGreen</item>
+    </style>
+
+    <style name="MapsButtonsInactive" parent="MapsButtonsText">
+        <item name="android:textColor">@color/colorOffBlack</item>
+        <item name="android:background">@color/colorOffWhite</item>
+    </style>
 
 </resources>

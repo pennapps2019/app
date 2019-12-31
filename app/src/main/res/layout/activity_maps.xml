@@ -74,9 +74,40 @@
         android:gravity="top"
         tools:context=".MapsActivity" />
 
-    <ImageView
+    <!-- Button bar -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@raw/background_bottom" />
+        android:layout_height="70dp"
+        android:background="@color/colorGrey">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorGreen"
+            style="@style/MapsButtonsActive"
+            android:textColor="@color/colorOffWhite"
+            android:text="@string/maps_now" >
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="2dp"
+            style="@style/MapsButtonsInactive"
+            android:text="@string/maps_1hr"
+            tools:targetApi="o">
+        </Button>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/MapsButtonsInactive"
+            android:text="@string/maps_2hr" >
+        </Button>
+
+    </LinearLayout>
 
 </LinearLayout>
