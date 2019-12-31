@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.viewpager2.widget.ViewPager2
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_onboarding"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/AppTheme" />
+    android:layout_height="match_parent" >
+
+    <!-- Used for forcing the current page icon and text button to the bottom
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/activity_onboarding_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/AppTheme" />
+
+        <!-- Bottom half: Container for current page icon and skip button -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="60dp" >
+
+            <!-- Current page icons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center" >
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!-- Green dot -->
+                    <ImageView
+                        style="@style/OnboardingCurrentPageDot"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_active" />
+                    <!-- Grey dot -->
+                    <ImageView
+                        android:id="@+id/onboarding_page_0_indicator"
+                        style="@style/OnboardingCurrentPageDot"
+                        android:visibility="invisible"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_inactive" />
+
+                </FrameLayout>
+
+
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!-- Green dot -->
+                    <ImageView
+                        style="@style/OnboardingCurrentPageDot"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_active" />
+                    <!-- Grey dot -->
+                    <ImageView
+                        android:id="@+id/onboarding_page_1_indicator"
+                        style="@style/OnboardingCurrentPageDot"
+                        android:visibility="visible"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_inactive" />
+
+                </FrameLayout>
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_onboarding_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/OnboardingTextButton"
+                android:text="@string/skip" />
+
+        </FrameLayout>  <!-- Bottom half: Container for current page icon and skip button -->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

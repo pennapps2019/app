@@ -1,162 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content"
+
+<!-- Used for forcing the content to the bottom -->
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Used for forcing the content to the bottom -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Not set as the background to avoid stretching the image -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/content_description_current_page"
+        android:src="@drawable/onboarding_2_background"
+        android:adjustViewBounds="true" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:contentDescription="@string/content_description_current_page"
-            android:src="@drawable/onboarding_2_background"
-            android:adjustViewBounds="true" />
+    <!-- Just to create the white box -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOffWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
 
-        <!-- Just to create the white box -->
+        <!-- Actual content container; also adds all-around margin -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorOffWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" >
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginHorizontal="20dp"
+            tools:ignore="UnusedAttribute,UselessParent">
 
-            <!-- Actual content container; also adds all-around margin -->
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="60dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginHorizontal="20dp"
-                tools:ignore="UnusedAttribute">
+                style="@style/OnboardingText"
+                android:text="@string/onboarding_2_text_1" />
 
+            <!-- Container for example colors -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="start"
+                    android:contentDescription="@string/onboarding_2_empty_color"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_onboarding_2_area_empty" />
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/OnboardingText"
-                    android:text="@string/onboarding_2_text_1" />
-
-                <!-- Container for example colors -->
-                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="20dp"
-                    android:gravity="center" >
+                    android:layout_marginEnd="30dp"
+                    style="@style/OnboardingIconExamples"
+                    android:text="@string/empty" />
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/onboarding_2_empty_color"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_onboarding_2_area_empty" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="30dp"
-                        style="@style/OnboardingIconExamples"
-                        android:text="@string/empty" />
-
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/onboarding_2_sparse_color"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_onboarding_2_area_sparse" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="30dp"
-                        style="@style/OnboardingIconExamples"
-                        android:text="@string/sparse" />
-
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/onboarding_2_crowded_color"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/ic_onboarding_2_area_crowded" />
-                    <!-- No marginEnd unlike the others -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/OnboardingIconExamples"
-                        android:text="@string/crowded" />
-
-
-
-                </LinearLayout>
-
-
-
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="start"
+                    android:contentDescription="@string/onboarding_2_sparse_color"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_onboarding_2_area_sparse" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    style="@style/OnboardingText"
-                    android:text="@string/onboarding_2_text_2" />
+                    android:layout_marginEnd="30dp"
+                    style="@style/OnboardingIconExamples"
+                    android:text="@string/sparse" />
 
-
-
-
-                <!-- Bottom half: Container for current page icon and skip button -->
-                <FrameLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="start"
+                    android:contentDescription="@string/onboarding_2_crowded_color"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_onboarding_2_area_crowded" />
+                <!-- No marginEnd unlike the others -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom" >
+                    style="@style/OnboardingIconExamples"
+                    android:text="@string/crowded" />
 
-                    <!-- Current page icons -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center" >
+            </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/onboarding_page_view_1"
-                            style="@style/OnboardingCurrentPageDot"
-                            android:contentDescription="@string/content_description_current_page"
-                            android:src="@drawable/ic_onboarding_page_inactive" />
 
-                        <ImageView
-                            android:id="@+id/onboarding_page_view_2"
-                            style="@style/OnboardingCurrentPageDot"
-                            android:contentDescription="@string/content_description_current_page"
-                            android:src="@drawable/ic_onboarding_page_active" />
 
-                    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                style="@style/OnboardingText"
+                android:text="@string/onboarding_2_text_2" />
 
-                    <!-- Push 60dp (fragment_onboarding1) - 20dp (content container above)
-                         = 40dp to the left, to match Onboarding 1 -->
-                    <Button
-                        android:id="@+id/button_finish_onboarding"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="40dp"
-                        style="@style/OnboardingTextButton"
-                        android:text="@string/content_description_finish" />
+        </LinearLayout>  <!-- Actual content container -->
 
-                </FrameLayout>
+    </LinearLayout>  <!-- White box -->
 
-            </LinearLayout>  <!-- Actual content container -->
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>  <!-- White box -->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</LinearLayout>

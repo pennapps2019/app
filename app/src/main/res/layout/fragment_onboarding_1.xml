@@ -1,101 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/onboarding_1_background">
 
-    <!-- Used for:
-           1. Adding all-around margin to content
-           2. Forcing the current page icon and text button to the bottom
-    -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="60dp">
+        android:layout_margin="60dp"
+        tools:ignore="UselessParent">
 
-        <!-- Top half -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical" >
-
-            <!-- Container for center graphic -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginBottom="40dp"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/content_description_circle_marker"
-                    android:src="@drawable/ic_onboarding_1_circle" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/content_description_book"
-                    android:src="@drawable/ic_onboarding_1_book" />
-
-            </FrameLayout>  <!-- Container for center graphic -->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/OnboardingText"
-                android:text="@string/onboarding_1_description" />
-
-        </LinearLayout>  <!-- Top half -->
-
-
-
-        <!-- Bottom half: Container for current page icon and skip button -->
+        <!-- Container for center graphic -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" >
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="40dp"
+            android:layout_gravity="center">
 
-            <!-- Current page icons -->
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center" >
+                android:contentDescription="@string/content_description_circle_marker"
+                android:src="@drawable/ic_onboarding_1_circle" />
 
-                <ImageView
-                    android:id="@+id/onboarding_page_view_1"
-                    style="@style/OnboardingCurrentPageDot"
-                    android:contentDescription="@string/content_description_current_page"
-                    android:src="@drawable/ic_onboarding_page_active" />
-
-                <ImageView
-                    android:id="@+id/onboarding_page_view_2"
-                    style="@style/OnboardingCurrentPageDot"
-                    android:contentDescription="@string/content_description_current_page"
-                    android:src="@drawable/ic_onboarding_page_inactive" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_skip_onboarding"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/OnboardingTextButton"
-                android:text="@string/content_description_skip" />
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/content_description_book"
+                android:src="@drawable/ic_onboarding_1_book" />
 
-        </FrameLayout>  <!-- Bottom half: Container for current page icon and skip button -->
+        </FrameLayout>  <!-- Container for center graphic -->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/OnboardingText"
+            android:text="@string/onboarding_1_description" />
+
+    </LinearLayout>
 
 </LinearLayout>
