@@ -81,16 +81,16 @@
         android:background="@color/colorGrey">
 
         <Button
+            android:id="@+id/btn_maps_now"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorGreen"
             style="@style/MapsButtonsActive"
-            android:textColor="@color/colorOffWhite"
             android:text="@string/maps_now" >
         </Button>
 
         <Button
+            android:id="@+id/btn_maps_1hr"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -101,6 +101,7 @@
         </Button>
 
         <Button
+            android:id="@+id/btn_maps_2hr"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

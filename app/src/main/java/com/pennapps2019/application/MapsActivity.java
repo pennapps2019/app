@@ -1,6 +1,8 @@
 package com.pennapps2019.application;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
@@ -40,6 +42,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -112,6 +115,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     0);
         }
 
+        linkButtons();
+
         // Set button behaviour
 //        final Button button = findViewById(R.id.create_output_button);
 //        button.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +146,49 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         res.setLatitude(latitude);
         res.setLongitude(longitude);
         return res;
+    }
+
+    private void linkButtons() {
+        final Context context = this;
+
+        // Set button behaviour
+        final Button btn_maps_now = findViewById(R.id.btn_maps_now);
+        final Button btn_maps_1hr = findViewById(R.id.btn_maps_1hr);
+        final Button btn_maps_2hr = findViewById(R.id.btn_maps_2hr);
+
+        btn_maps_now.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                activateButton(context, btn_maps_now);
+                deactivateButton(context, btn_maps_1hr);
+                deactivateButton(context, btn_maps_2hr);
+            }
+        });
+
+        btn_maps_1hr.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deactivateButton(context, btn_maps_now);
+                activateButton(context, btn_maps_1hr);
+                deactivateButton(context, btn_maps_2hr);
+            }
+        });
+
+        btn_maps_2hr.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deactivateButton(context, btn_maps_now);
+                deactivateButton(context, btn_maps_1hr);
+                activateButton(context, btn_maps_2hr);
+            }
+        });
+    }
+
+    private void activateButton(Context c, Button b) {
+        b.setTextAppearance(c, R.style.MapsButtonsActive);
+        b.setBackgroundColor(ContextCompat.getColor(c, R.color.colorGreen));
+    }
+
+    private void deactivateButton(Context c, Button b) {
+        b.setTextAppearance(c, R.style.MapsButtonsInactive);
+        b.setBackgroundColor(ContextCompat.getColor(c, R.color.colorOffWhite));
     }
 
     /**
