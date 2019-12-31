@@ -20,10 +20,11 @@ Build and run the Android application on a physical or virtual device.
 
 #### Creating a Production Release
 
-Save the following lines to the file `~/.gradle/gradle.properties` and fill in the values:
+Create a new file in the root directory to hold the secure keystore details:
+```shell
+cp keystore.properties.template keystore.properties
 ```
-STILLSPACE_KEY_STORE_FILE=/path/to/keystore.jks
-STILLSPACE_KEY_ALIAS=
-STILLSPACE_KEY_PASSWORD=
-STILLSPACE_STORE_PASSWORD=
-```
+
+This file will be ignored by Git.
+
+Set your keystore information in this file.
