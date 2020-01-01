@@ -39,18 +39,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <!-- Grey dot -->
+                    <ImageView
+                        style="@style/OnboardingCurrentPageDot"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_inactive" />
                     <!-- Green dot -->
                     <ImageView
+                        android:id="@+id/onboarding_page_0_indicator"
+                        android:visibility="visible"
                         style="@style/OnboardingCurrentPageDot"
                         android:contentDescription="@string/content_description_current_page"
                         android:src="@drawable/ic_onboarding_page_active" />
-                    <!-- Grey dot -->
-                    <ImageView
-                        android:id="@+id/onboarding_page_0_indicator"
-                        style="@style/OnboardingCurrentPageDot"
-                        android:visibility="invisible"
-                        android:contentDescription="@string/content_description_current_page"
-                        android:src="@drawable/ic_onboarding_page_inactive" />
 
                 </FrameLayout>
 
@@ -60,18 +60,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <!-- Grey dot -->
+                    <ImageView
+                        style="@style/OnboardingCurrentPageDot"
+                        android:contentDescription="@string/content_description_current_page"
+                        android:src="@drawable/ic_onboarding_page_inactive" />
                     <!-- Green dot -->
                     <ImageView
+                        android:id="@+id/onboarding_page_1_indicator"
+                        android:visibility="invisible"
                         style="@style/OnboardingCurrentPageDot"
                         android:contentDescription="@string/content_description_current_page"
                         android:src="@drawable/ic_onboarding_page_active" />
-                    <!-- Grey dot -->
-                    <ImageView
-                        android:id="@+id/onboarding_page_1_indicator"
-                        style="@style/OnboardingCurrentPageDot"
-                        android:visibility="visible"
-                        android:contentDescription="@string/content_description_current_page"
-                        android:src="@drawable/ic_onboarding_page_inactive" />
 
                 </FrameLayout>
 

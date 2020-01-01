@@ -75,15 +75,15 @@ public class OnboardingActivity extends FragmentActivity {
                 onboardingAction.setText(text);
 
                 // Set page markers
-                View page_0_inactive = findViewById(R.id.onboarding_page_0_indicator);
-                View page_1_inactive = findViewById(R.id.onboarding_page_1_indicator);
+                View page_0_indicator = findViewById(R.id.onboarding_page_0_indicator);
+                View page_1_indicator = findViewById(R.id.onboarding_page_1_indicator);
                 if (pos == 0) {
-                    page_0_inactive.setVisibility(View.INVISIBLE);
-                    page_1_inactive.setVisibility(View.VISIBLE);
+                    page_0_indicator.setVisibility(View.VISIBLE);
+                    page_1_indicator.setVisibility(View.INVISIBLE);
                 }
                 else {
-                    page_0_inactive.setVisibility(View.VISIBLE);
-                    page_1_inactive.setVisibility(View.INVISIBLE);
+                    page_0_indicator.setVisibility(View.INVISIBLE);
+                    page_1_indicator.setVisibility(View.VISIBLE);
                 }
 
             }
