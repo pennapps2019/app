@@ -5,7 +5,7 @@ def filename = "keystore.properties"
 if (!file(filename).exists()) {
     // Substitute with template if no configuration exists
     print("No keystore.properties file found.")
-//    filename += ".template"
+    filename += ".template"
 }
 
 def keystoreProperties = new Properties()
