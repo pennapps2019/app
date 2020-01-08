@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 // Initialize the keystore credentials from the keystore.properties file
 def filename = "keystore.properties"
-if (!file(filename).exists()) {
+if (!rootProject.file(filename).exists()) {
     // Substitute with template if no configuration exists
     print("No keystore.properties file found.")
     filename += ".template"
