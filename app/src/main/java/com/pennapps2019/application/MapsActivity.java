@@ -259,10 +259,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onResume() {
         super.onResume();
-        fusedLocationClient.requestLocationUpdates(
-                locationRequest,
-                locationCallback,
-                null);
+//        fusedLocationClient.requestLocationUpdates(
+//                locationRequest,
+//                locationCallback,
+//                null);
 
     }
 
