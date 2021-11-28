@@ -24,9 +24,9 @@ android {
     defaultConfig {
         applicationId "com.pennapps2019.application"
         minSdkVersion 22
-        targetSdkVersion 28
-        versionCode 3
-        versionName "1.1"
+        targetSdkVersion 30
+        versionCode 4
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
