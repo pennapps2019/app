@@ -219,9 +219,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         LatLng levineHall = new LatLng(39.952090, -75.190840);
+        float zoomLevel = 17.5f;
         mMap.addMarker(new MarkerOptions().position(levineHall).title("Marker at Levine Hall"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(levineHall));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(17.5f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(levineHall, zoomLevel));
     }
 
     private void addHeatMap() {
